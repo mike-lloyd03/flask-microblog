@@ -1,12 +1,15 @@
+import os
+import logging
+from logging.handlers import SMTPHandler, RotatingFileHandler
+
 from flask import Flask
-from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_mail import Mail
-import logging
-from logging.handlers import SMTPHandler, RotatingFileHandler
-import os
+from flask_bootstrap import Bootstrap
+
+from config import Config
 
 flask_app = Flask(__name__)
 flask_app.config.from_object(Config)
@@ -15,6 +18,7 @@ migrate = Migrate(flask_app, db)
 login = LoginManager(flask_app)
 login.login_view = 'login'
 mail = Mail(flask_app)
+bootstrap = Bootstrap(flask_app)
 
 from app import routes, models, errors
 
