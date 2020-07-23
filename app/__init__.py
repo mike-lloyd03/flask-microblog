@@ -62,5 +62,5 @@ if not flask_app.debug:
 
 @babel.localeselector
 def get_locale():
-    # return request.accept_languages.best_match(flask_app.config['LANGUAGES'])
-    return 'es'
+    return request.accept_languages.best_match(flask_app.config['LANGUAGES'])
+    # return 'es'
