@@ -24,7 +24,10 @@ bootstrap = Bootstrap(flask_app)
 moment = Moment(flask_app)
 babel = Babel(flask_app)
 
-from app import routes, models, errors
+from app.errors import bp as errors_bp
+flask_app.register_blueprint(errors_bp)
+
+from app import routes, models
 
 if not flask_app.debug:
     if flask_app.config['MAIL_SERVER']:
